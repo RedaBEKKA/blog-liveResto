@@ -1,25 +1,45 @@
 import React from "react";
-import { Container, Box, height, margin } from "@mui/system";
+import { Container, Box } from "@mui/system";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/joy/Button";
 import Textarea from "@mui/joy/Textarea";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const Article = () => {
+  const { id } = useParams(); //string
+  const [product, setProduct] = useState({});
+  useEffect(() => {
+    getProduct();
+  });
+
+  const getProduct = () => {
+    axios
+      .get("http://localhost:3500/posts")
+      .then((res) => {
+        let allPosts = res.data;
+        const newProduct = allPosts.find((item) => item.id === parseInt(id));
+        setProduct(newProduct);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Container>
       <Box>
         <Box display="flex" alignItems="center" p={2}>
           <Avatar
             alt="Remy Sharp"
-            src="/static/images/avatar/1.jpg"
+            src={product.imageUrl}
             sx={{ width: 56, height: 56, margin: 2 }}
           />
           <Typography color="#777" fontSize="medium" marginRight={1.5}>
-            UserName
+            {product.createBy}
           </Typography>
           <Typography color="#777" fontSize="small">
-            19 Octobre, 2020
+            {product.createAt}
           </Typography>
         </Box>
         <Typography
@@ -28,13 +48,10 @@ const Article = () => {
           textAlign="center"
           marginBottom={4}
         >
-          Excellent article avec zero faute
+          {product.contenu}
         </Typography>
         <Box textAlign="center" marginBottom={5}>
-          <img
-            src="https://img.freepik.com/free-photo/flat-lay-batch-cooking-composition_23-2148765597.jpg?w=900"
-            alt="imagetitle"
-          />
+          <img src={product.imageUrl} alt="imagetitle" />
         </Box>
         <Typography
           textAlign="center"
@@ -45,29 +62,7 @@ const Article = () => {
           margin="auto"
           marginBottom={10}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum aut
-          quia adipisci velit exercitationem labore voluptate, voluptatem ut
-          facere aperiam tempora, ipsam delectus? Expedita perferendis itaque
-          explicabo voluptate soluta officia? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Harum aut quia adipisci velit
-          exercitationem labore voluptate, voluptatem ut facere aperiam tempora,
-          ipsam delectus? Expedita perferendis itaque explicabo voluptate soluta
-          officia? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Harum aut quia adipisci velit exercitationem labore voluptate,
-          voluptatem ut facere aperiam tempora, ipsam delectus? Expedita
-          perferendis itaque explicabo voluptate soluta officia? Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Harum aut quia adipisci
-          velit exercitationem labore voluptate, voluptatem ut facere aperiam
-          tempora, ipsam delectus? Expedita perferendis itaque explicabo
-          voluptate soluta officia? ipsam delectus? Expedita perferendis itaque
-          explicabo voluptate soluta officia? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Harum aut quia adipisci velit
-          exercitationem labore voluptate, voluptatem ut facere aperiam tempora,
-          ipsam delectus? Expedita perferendis itaque explicabo voluptate soluta
-          officia? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Harum aut quia adipisci velit exercitationem labore voluptate,
-          voluptatem ut facere aperiam tempora, ipsam delectus? Expedita
-          perferendis itaque explicabo voluptate soluta officia?
+          {product.contenu}
         </Typography>
         <Box borderBottom={1} pb={1} marginBottom={2}>
           Commentaires
