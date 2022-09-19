@@ -7,22 +7,26 @@ import { Button, CardActions, Typography } from "@mui/material";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-
+import AppPagination from "./AppPagination";
 const CardPost = () => {
   const [postsData, setPostsData] = useState([]);
+  const [page, setPage] = useState(9);
+  const [numberOfPages, setNumberOfPages] = useState();
 
   const fetchData = () => {
     axios
-      .get("http://localhost:3500/posts")
+      .get(`http://localhost:3500/posts?_page=${page}`)
       .then((res) => {
         let allPosts = res.data;
         setPostsData(allPosts);
+        // setNumberOfPages(res.data.length);
+        console.log(allPosts.length);
       })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [page]);
 
   return (
     <div>
@@ -53,6 +57,7 @@ const CardPost = () => {
           );
         })}
       </Grid>
+      <AppPagination setPage={setPage} pageNumber={numberOfPages} />
     </div>
   );
 };

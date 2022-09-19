@@ -1,8 +1,15 @@
 import { Pagination } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
-const AppPagination = () => {
+const AppPagination = ({ setPage, pageNumber }) => {
+  const handleChange = (page) => {
+    setPage(page);
+    window.scroll(0, 0);
+  };
+
   return (
     <div>
       <Box
@@ -13,7 +20,11 @@ const AppPagination = () => {
           margin: "60px 0px",
         }}
       >
-        <Pagination count={10} />
+        <Pagination
+          count={pageNumber}
+          color="primary"
+          onChange={(e) => handleChange(e.target.textContent)}
+        />
       </Box>
     </div>
   );

@@ -13,7 +13,6 @@ const PostsCard = () => {
         <Grid container spacing={4}>
           <CardPost />
         </Grid>
-        <AppPagination />
       </Container>
     </div>
   );
