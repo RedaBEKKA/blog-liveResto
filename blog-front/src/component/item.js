@@ -6,13 +6,20 @@ function Item({ item }) {
       <img
         src={item.image}
         alt={item.title}
-        style={{ width: "100%", height: "80vh", backgroundSize: "cover" }}
+        style={{
+          width: "100%",
+          maxHeight: "80vh",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       />
       <div
         className="description"
         style={{ display: "flex", justifyContent: "center" }}
       >
-        <h2 style={{ color: "#233069", fontSize: "35px" }}>{item.title}</h2>
+        <h2 sx={{ color: "#233069", fontSize: { xs: "22px", md: "32px" } }}>
+          {item.title}
+        </h2>
       </div>
     </Paper>
   );

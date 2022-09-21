@@ -17,7 +17,7 @@ const Article = () => {
 
   const getProduct = () => {
     axios
-      .get("http://localhost:3500/posts")
+      .get("https://127.0.0.1:8000/api/posts")
       .then((res) => {
         let allPosts = res.data;
         const newProduct = allPosts.find((item) => item.id === parseInt(id));
@@ -38,26 +38,39 @@ const Article = () => {
           <Typography color="#777" fontSize="medium" marginRight={1.5}>
             {product.createBy}
           </Typography>
-          <Typography color="#777" fontSize="small">
+          <Typography
+            color="#777"
+            sx={{ fontSize: { xs: "11px", md: "15px" } }}
+          >
             {product.createAt}
           </Typography>
         </Box>
         <Typography
-          variant="h3"
+          variant="h4"
           fontWeight="bold"
           textAlign="center"
+          sx={{ fontSize: { xs: "20px", md: "25px" } }}
           marginBottom={4}
         >
-          {product.contenu}
+          {product.titre}
         </Typography>
         <Box textAlign="center" marginBottom={5}>
-          <img src={product.imageUrl} alt="imagetitle" />
+          <img
+            src={product.imageUrl}
+            alt="imagetitle"
+            style={{
+              width: "100%",
+              maxHeight: "80vh",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
         </Box>
         <Typography
           textAlign="center"
           lineHeight="2"
           color="#616161"
-          fontSize={17}
+          sx={{ fontSize: { xs: "17px", md: "19px" } }}
           maxWidth="80%"
           margin="auto"
           marginBottom={10}
@@ -188,7 +201,7 @@ const Article = () => {
             flexWrap: "wrap",
           }}
         >
-          <form
+          {/* <form
             onSubmit={(event) => {
               event.preventDefault();
             }}
@@ -213,7 +226,7 @@ const Article = () => {
             >
               Submit
             </Button>
-          </form>
+          </form> */}
         </Box>
       </Box>
     </Container>

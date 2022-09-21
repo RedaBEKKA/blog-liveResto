@@ -1,8 +1,6 @@
 import { Pagination } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import axios from "axios";
-import { useEffect } from "react";
 
 const AppPagination = ({ setPage, pageNumber }) => {
   const handleChange = (page) => {
