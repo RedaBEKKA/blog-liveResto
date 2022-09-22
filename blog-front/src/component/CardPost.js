@@ -29,14 +29,17 @@ const CardPost = () => {
   }, []);
 
   return (
-    <Box>
-      <Grid container spacing={4}>
+    <Box marginTop={10}>
+      <Grid container spacing={6}>
         {postsData.map((ele, index) => {
           return (
-            <Grid item xs={12} sm={6} md={4} key={ele.id}>
+            <Grid item xs={12} sm={6} md={4} key={ele.id} minHeight="250px">
               <Card
                 elevation={1}
-                sx={{ padding: { xs: "0px 5px", sm: "0px 9px", md: "0px" } }}
+                sx={{
+                  padding: { xs: "0px 5px", sm: "0px 9px", md: "0px" },
+                  alignSelf: "normal",
+                }}
               >
                 <Typography
                   sx={{
@@ -72,7 +75,7 @@ const CardPost = () => {
                     align="center"
                     sx={{ fontSize: { xs: "15px", sm: "17px" } }}
                   >
-                    {ele.contenu}
+                    {ele.contenu.slice(0, 100) + "..."}
                   </Typography>
                 </CardContent>
                 <CardActions>

@@ -6,6 +6,7 @@ import {
   InputBase,
   Menu,
   MenuItem,
+  Button,
 } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -17,13 +18,15 @@ import {
 } from "@mui/icons-material";
 import { positions } from "@mui/system";
 import { Link } from "react-router-dom";
+import { fontSize } from "@mui/joy/styles/styleFunctionSx";
+import logo from "./../../images/logo2.png";
 
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
   });
-  const SocialBox = styled(Box)({
+  const LogoBox = styled(Box)({
     display: "flex",
     gap: 10,
   });
@@ -42,11 +45,9 @@ const Navbar = () => {
   return (
     <AppBar position={"static"}>
       <StyledToolbar>
-        <SocialBox>
-          <Facebook />
-          <Instagram />
-          <Twitter />
-        </SocialBox>
+        <LogoBox width={60} height={"66"}>
+          <img src={logo} alt="logo" width={"100%"} borderRadius="50%" />
+        </LogoBox>
         <MenuBox sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
             <Link
@@ -55,35 +56,30 @@ const Navbar = () => {
               color="white"
               underline="none"
             >
-              Posts
+              Acceuil
             </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
             <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
-              Propos
+              A propos de nous
             </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
+              Aide
+            </Link>
+          </Typography>
+        </MenuBox>
+        <SearchBox>
+          <Button variant="outlined">
             <Link
               style={{ textDecoration: "none", color: "white" }}
               to={`/login`}
             >
               Se Connecter
             </Link>
-          </Typography>
-          <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
-              Create Post
-            </Link>
-          </Typography>
-          <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
-              Conact US
-            </Link>
-          </Typography>
-        </MenuBox>
-        <SearchBox>
-          <InputBase placeholder="Search ...." sx={{ color: "white" }} />
+          </Button>
+
           <MenuIcon
             sx={{
               color: "white",
@@ -108,11 +104,46 @@ const Navbar = () => {
           sx={{ top: { xs: 45, sm: 50 } }}
         >
           <Box sx={{ width: { xs: 300 }, height: "75vh" }}>
-            <MenuItem>Posts</MenuItem>
-            <MenuItem>Propos</MenuItem>
-            <MenuItem> Se Connecter</MenuItem>
-            <MenuItem> Create Post</MenuItem>
-            <MenuItem> Conact US</MenuItem>
+            <MenuItem>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "20px",
+                  marginBottom: "12px",
+                  marginTop: "12px",
+                }}
+                to={"/"}
+              >
+                Acceuil
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "20px",
+                  marginBottom: "12px",
+                }}
+                to={"#"}
+              >
+                A propos de nous
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "20px",
+                  marginBottom: "12px",
+                }}
+                to={"#"}
+              >
+                Aide
+              </Link>
+            </MenuItem>
           </Box>
         </Menu>
       </StyledToolbar>
