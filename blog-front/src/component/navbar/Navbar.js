@@ -16,6 +16,7 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import { positions } from "@mui/system";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
@@ -48,19 +49,37 @@ const Navbar = () => {
         </SocialBox>
         <MenuBox sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            Posts
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/`}
+              color="white"
+              underline="none"
+            >
+              Posts
+            </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            Propos
+            <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
+              Propos
+            </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            Se Connecter
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/login`}
+            >
+              Se Connecter
+            </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            Create Post
+            <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
+              Create Post
+            </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            Conact US
+            <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
+              Conact US
+            </Link>
           </Typography>
         </MenuBox>
         <SearchBox>

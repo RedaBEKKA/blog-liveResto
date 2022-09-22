@@ -40,7 +40,7 @@ const CardPost = () => {
               >
                 <Typography
                   sx={{
-                    fontSize: { xs: "20px", md: "2px" },
+                    fontSize: { xs: "20px", md: "22px" },
                     textAlign: "center",
                   }}
                 >
