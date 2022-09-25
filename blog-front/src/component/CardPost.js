@@ -1,5 +1,4 @@
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import React, { useEffect, useState } from "react";
@@ -33,27 +32,39 @@ const CardPost = () => {
       <Grid container spacing={6}>
         {postsData.map((ele, index) => {
           return (
-            <Grid item xs={12} sm={6} md={4} key={ele.id} minHeight="250px">
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              key={ele.id}
+              minHeight="250px"
+              display={"flex"}
+            >
               <Card
                 elevation={1}
                 sx={{
                   padding: { xs: "0px 5px", sm: "0px 9px", md: "0px" },
                   alignSelf: "normal",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignSelf: "normal",
                 }}
               >
                 <Typography
                   sx={{
-                    fontSize: { xs: "20px", md: "22px" },
+                    fontSize: { xs: "16px", md: "16px" },
                     textAlign: "center",
+                    padding: { md: "16px 7px 0px " },
                   }}
                 >
-                  {ele.titre}
+                  {ele.titre.slice(0, 35) + "..."}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: { xs: "13px", md: "15px" },
+                    fontSize: { xs: "11px", md: "13px" },
                     textAlign: "center",
-                    padding: { md: "5px" },
+                    padding: { md: "2px" },
                     color: "text.secondary",
                     margin: { xs: "10px auto" },
                   }}
@@ -64,7 +75,10 @@ const CardPost = () => {
                 <CardMedia
                   sx={{ padding: { xs: "0px 5px", sm: "0px 9px", md: "0px" } }}
                   component="img"
-                  height="100%"
+                  width="100%"
+                  height="200px"
+                  objectFit="cover"
+                  marginTop="auto"
                   image={ele.imageUrl}
                   alt="Paella dish"
                 />
@@ -80,7 +94,12 @@ const CardPost = () => {
                 </CardContent>
                 <CardActions>
                   <Button>
-                    <Link to={`/blog/${ele.id}`}>Plus</Link>
+                    <Link
+                      to={`/blog/${ele.id}`}
+                      style={{ marginTop: "auto", textDecoration: "none" }}
+                    >
+                      Plus
+                    </Link>
                   </Button>
                 </CardActions>
               </Card>

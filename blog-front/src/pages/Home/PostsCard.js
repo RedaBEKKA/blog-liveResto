@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 
 import SliderItems from "../../component/SliderItems";
+import Footer from "../../component/Footer";
 const PostsCard = () => {
   return (
     <div>
@@ -13,6 +14,7 @@ const PostsCard = () => {
           <CardPost />
         </Grid>
       </Container>
+      <Footer />
     </div>
   );
 };

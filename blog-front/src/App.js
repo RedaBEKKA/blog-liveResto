@@ -14,7 +14,6 @@ function App() {
         <Route path="/blog/:id" element={<Article />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

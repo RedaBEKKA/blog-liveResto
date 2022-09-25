@@ -4,15 +4,15 @@ html {
 }
 
 body {
+  box-sizing: inherit;
   text-align: center;
   min-height: 100%;
   position: relative;
   margin: 0;
-  box-sizing: inherit;
 }
 footer {
-  position: absolute;
+  /* position: absolute;
   right: 0;
   left: 0;
-  bottom: 0;
+  bottom: 0; */
 }
