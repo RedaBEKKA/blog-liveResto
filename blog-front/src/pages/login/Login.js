@@ -1,108 +1,121 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
-import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
-import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
+import React, { useRef } from "react";
+import { TextField, Container, Button, Box, Grid } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 const Login = () => {
-  const [isSignup, setIsSignup] = useState(false);
-  const [inputs, setInputs] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  let password;
+  let cpassword;
+  const {
+    register,
+    handleSubmit,
+    watch,
+    getValues,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    setInputs((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
+  password = watch("password", "");
+  cpassword = watch("cpassword", "");
+  console.log(password, cpassword);
+  const onSubmit = (data) => {
+    console.log(data);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(inputs);
-  };
-
-  const resetState = () => {
-    setIsSignup(!isSignup);
-
-    setInputs({ name: "", email: "", password: "" });
-  };
-
   return (
-    <Box sx={{ marginBottom: "15vh" }}>
-      <form onSubmit={handleSubmit}>
-        <Box
-          display="flex"
-          flexDirection={"column"}
-          maxWidth={500}
-          alignItems="center"
-          justifyContent="center"
-          margin="auto"
-          marginTop={8}
-          padding={3}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
-          sx={{
-            ":hover": {
-              boxShadow: "10px 10px 20px #ccc",
-            },
-          }}
-        >
-          <Typography variant="h2" padding={2} textAlign="center">
-            {isSignup ? "Sign Up" : "Login "}
-          </Typography>
-          {isSignup && (
-            <TextField
-              onChange={handleChange}
-              name="name"
-              value={inputs.name}
-              margin="normal"
-              type={"text"}
-              variant="outlined"
-              placeholder="Name"
-            />
-          )}
+    <Container maxWidth="xs" mt={5}>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Box mb={2} mt={5}>
           <TextField
-            onChange={handleChange}
-            name="email"
-            value={inputs.email}
-            margin="normal"
-            type={"email"}
             variant="outlined"
-            placeholder="Email"
+            label="full name"
+            fullWidth
+            autoComplete="name"
+            autoFocus
+            {...register("name", {
+              required: "Required field",
+              pattern: {
+                value:
+                  /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/,
+                message: "Invalide name",
+              },
+            })}
+            error={!!errors?.name}
+            helperText={errors?.name ? errors.name.message : null}
           />
-          <TextField
-            onChange={handleChange}
-            value={inputs.password}
-            name="password "
-            margin="normal"
-            type={"password"}
-            variant="outlined"
-            placeholder="Password"
-          />
-          <Button
-            endIcon={
-              isSignup ? <HowToRegOutlinedIcon /> : <LoginOutlinedIcon />
-            }
-            type="submit"
-            sx={{ marginTop: 3, borderRadius: 2 }}
-            variant="contained"
-            color="warning"
-          >
-            {isSignup ? "Signup" : "Login"}
-          </Button>
-          <Button
-            endIcon={
-              isSignup ? <LoginOutlinedIcon /> : <HowToRegOutlinedIcon />
-            }
-            onClick={resetState}
-            sx={{ marginTop: 3, borderRadius: 2 }}
-          >
-            {isSignup ? "Login" : "Signup"}
-          </Button>
         </Box>
+
+        <Box mb={2} mt={5}>
+          <TextField
+            variant="outlined"
+            label="email"
+            fullWidth
+            autoComplete="email"
+            {...register("email", {
+              required: "Required field",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalide email adress",
+              },
+            })}
+            error={!!errors?.email}
+            helperText={errors?.email ? errors.email.message : null}
+          />
+        </Box>
+        <Box mb={2} mt={5}>
+          <TextField
+            variant="outlined"
+            label="password"
+            fullWidth
+            type="password"
+            autoComplete="password"
+            {...register("password", {
+              required: "Required field",
+              pattern: {
+                // Min 1 uppercase letter.Min 1 lowercase letter Min 1 special character.Min 1 number Min 8 characters.Max 30 characters.
+                value:
+                  /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/,
+                message:
+                  "MIN (1 uppercase ,1 lowercase letters 1 special character 1 number , 8 characters)",
+              },
+            })}
+            error={!!errors?.password}
+            helperText={errors?.password ? errors.password.message : null}
+          />
+        </Box>
+
+        <Box mb={2} mt={5}>
+          <TextField
+            variant="outlined"
+            label="confirm password"
+            fullWidth
+            type="password"
+            autoComplete="cpassword"
+            {...register("cpassword", {
+              required: "require field",
+            })}
+          />
+          {watch("cpassword") !== watch("password") &&
+          getValues("cpassword") ? (
+            <p>password not match</p>
+          ) : null}
+        </Box>
+
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Login
+        </Button>
+        <Grid container>
+          <Grid item xs>
+            <Link href="#" variant="body2">
+              Forget password
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link href="#" variant="body2">
+              {"Don't have an account? Sign Up"}
+            </Link>
+          </Grid>
+        </Grid>
       </form>
-    </Box>
+    </Container>
   );
 };
 
