@@ -2,11 +2,9 @@ import React, { useRef, useState } from "react";
 import { TextField, Container, Button, Box, Grid } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { axios } from "axios";
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // let password;
+
+const SignUp = () => {
+  let password;
   let cpassword;
   const {
     register,
@@ -20,13 +18,8 @@ const Login = () => {
   password = watch("password", "");
   cpassword = watch("cpassword", "");
   console.log(password, cpassword);
-
   const onSubmit = (data) => {
     console.log(data);
-    axios
-      .post("https://127.0.0.1:8000/api/login_check", { email, password })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
     reset();
   };
   return (
@@ -43,8 +36,28 @@ const Login = () => {
         boxShadow: "5px 5px 10px #ccc",
       }}
     >
-      <h1>Login</h1>
+      <h1>Sign Up"</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <Box mb={3} mt={3}>
+          <TextField
+            variant="outlined"
+            label="full name"
+            fullWidth
+            autoComplete="name"
+            autoFocus
+            {...register("name", {
+              required: "name Required",
+              pattern: {
+                value:
+                  /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/,
+                message: "Invalide name",
+              },
+            })}
+            error={!!errors?.name}
+            helperText={errors?.name ? errors.name.message : null}
+          />
+        </Box>
+
         <Box mb={3}>
           <TextField
             variant="outlined"
@@ -60,6 +73,25 @@ const Login = () => {
             })}
             error={!!errors?.email}
             helperText={errors?.email ? errors.email.message : null}
+          />
+        </Box>
+
+        <Box mb={3}>
+          <TextField
+            variant="outlined"
+            label="phone"
+            fullWidth
+            autoComplete="text"
+            {...register("phone", {
+              required: "phone Required ",
+
+              pattern: {
+                value: /^[0-9]*.{10}$/,
+                message: "Invalide phone number",
+              },
+            })}
+            error={!!errors?.phone}
+            helperText={errors?.phone ? errors.phone.message : null}
           />
         </Box>
 
@@ -85,6 +117,26 @@ const Login = () => {
           />
         </Box>
 
+        <Box mb={3}>
+          <TextField
+            variant="outlined"
+            label="confirm password"
+            fullWidth
+            type="password"
+            autoComplete="cpassword"
+            {...register("cpassword", {
+              required: "require field",
+            })}
+            error={!!errors?.cpassword}
+            helperText={errors?.cpassword ? errors.cpassword.message : null}
+          />
+
+          {watch("cpassword") !== watch("password") &&
+          getValues("cpassword") ? (
+            <small>password not match</small>
+          ) : null}
+        </Box>
+
         <Button
           mt={3}
           type="submit"
@@ -92,34 +144,21 @@ const Login = () => {
           color="primary"
           fullWidth
         >
-          Login
+          Sign Up
         </Button>
         <Grid container mt={2}>
           <Grid item xs={6}>
             <Link
               href="#"
               variant="body2"
+              to={"/login"}
               style={{
                 color: "#666",
                 fontSize: "14px",
                 textDecoration: "none",
               }}
             >
-              Forget password
-            </Link>
-          </Grid>
-          <Grid item xs={6}>
-            <Link
-              href="#"
-              variant="body2"
-              to={"/signup"}
-              style={{
-                color: "#666",
-                fontSize: "14px",
-                textDecoration: "none",
-              }}
-            >
-              Sign Up
+              Login
             </Link>
           </Grid>
         </Grid>
@@ -128,4 +167,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
