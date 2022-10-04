@@ -4,10 +4,6 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { axios } from "axios";
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // let password;
-  let cpassword;
   const {
     register,
     handleSubmit,
@@ -17,16 +13,8 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  password = watch("password", "");
-  cpassword = watch("cpassword", "");
-  console.log(password, cpassword);
-
   const onSubmit = (data) => {
     console.log(data);
-    axios
-      .post("https://127.0.0.1:8000/api/login_check", { email, password })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
     reset();
   };
   return (
