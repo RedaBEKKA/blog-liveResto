@@ -60,7 +60,7 @@ const Navbar = () => {
             </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`#`}>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/propos`}>
               A propos de nous
             </Link>
           </Typography>

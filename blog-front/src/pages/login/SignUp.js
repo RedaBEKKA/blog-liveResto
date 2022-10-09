@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { TextField, Container, Button, Box, Grid } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { Axios } from "axios";
 
 const SignUp = () => {
   let password;
@@ -13,15 +14,29 @@ const SignUp = () => {
     getValues,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: "onChange" });
 
   password = watch("password", "");
   cpassword = watch("cpassword", "");
-  console.log(password, cpassword);
+
   const onSubmit = (data) => {
-    console.log(data);
+    let name = data.name;
+    let email = data.email;
+    let phone = data.phone;
+    let password = data.password;
+    console.log(name);
+    Axios.post("https://127.0.0.1:8000/api/register", {
+      email,
+      password,
+      full_name: name,
+      phone_numro: phone,
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
     reset();
   };
+
   return (
     <Container
       maxWidth="xs"
@@ -36,17 +51,17 @@ const SignUp = () => {
         boxShadow: "5px 5px 10px #ccc",
       }}
     >
-      <h1>Sign Up"</h1>
+      <h1>S'inscrire</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box mb={3} mt={3}>
           <TextField
             variant="outlined"
-            label="full name"
+            label="nom"
             fullWidth
             autoComplete="name"
             autoFocus
             {...register("name", {
-              required: "name Required",
+              required: "nom Required",
               pattern: {
                 value:
                   /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/,
@@ -79,15 +94,15 @@ const SignUp = () => {
         <Box mb={3}>
           <TextField
             variant="outlined"
-            label="phone"
+            label="portable"
             fullWidth
             autoComplete="text"
             {...register("phone", {
-              required: "phone Required ",
+              required: "portable Required ",
 
               pattern: {
                 value: /^[0-9]*.{10}$/,
-                message: "Invalide phone number",
+                message: "Invalide numéro de téléphone",
               },
             })}
             error={!!errors?.phone}
@@ -144,7 +159,7 @@ const SignUp = () => {
           color="primary"
           fullWidth
         >
-          Sign Up
+         S'inscrire
         </Button>
         <Grid container mt={2}>
           <Grid item xs={6}>
@@ -158,7 +173,7 @@ const SignUp = () => {
                 textDecoration: "none",
               }}
             >
-              Login
+              Connexion
             </Link>
           </Grid>
         </Grid>

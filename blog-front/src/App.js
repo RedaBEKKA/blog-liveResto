@@ -5,6 +5,7 @@ import Article from "./pages/blog/Article";
 import Navbar from "./component/navbar/Navbar";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/login/SignUp";
+import Propose from './pages/propos/Propose';
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/blog/:id" element={<Article />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/propos" element={<Propose/>}/>
       </Routes>
     </>
   );

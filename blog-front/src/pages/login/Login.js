@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { TextField, Container, Button, Box, Grid } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { axios } from "axios";
+import axios  from "axios";
 const Login = () => {
   const {
     register,
@@ -31,7 +31,7 @@ const Login = () => {
         boxShadow: "5px 5px 10px #ccc",
       }}
     >
-      <h1>Login</h1>
+      <h1>Connexion</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box mb={3}>
           <TextField
@@ -80,7 +80,7 @@ const Login = () => {
           color="primary"
           fullWidth
         >
-          Login
+          connexion
         </Button>
         <Grid container mt={2}>
           <Grid item xs={6}>
@@ -93,7 +93,7 @@ const Login = () => {
                 textDecoration: "none",
               }}
             >
-              Forget password
+              Mot de passe oublié
             </Link>
           </Grid>
           <Grid item xs={6}>
@@ -107,7 +107,7 @@ const Login = () => {
                 textDecoration: "none",
               }}
             >
-              Sign Up
+              S'inscrire
             </Link>
           </Grid>
         </Grid>
