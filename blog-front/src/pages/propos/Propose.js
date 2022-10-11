@@ -10,6 +10,7 @@ import {
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Footer from "./../../component/Footer";
+import ContactUs from "../../component/ContactUs";
 
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: 22,
@@ -428,6 +429,7 @@ const Propose = () => {
           </Grid>
         </Box>
       </Container>
+<ContactUs/>
       <Footer />
     </>
   );
