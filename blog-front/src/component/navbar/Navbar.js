@@ -37,8 +37,15 @@ const Navbar = () => {
   return (
     <AppBar position={"static"}>
       <StyledToolbar>
-        <LogoBox width={60} height={"66"}>
-          <img src={logo} alt="logo" width={"100%"} borderRadius="50%" />
+        <LogoBox width={60} height={"66"} sx={{ cursor: "pointer" }}>
+          <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to={`/`}
+            color="white"
+            underline="none"
+          >
+            <img src={logo} alt="logo" width={"100%"} borderRadius="50%" />
+          </Link>
         </LogoBox>
         <MenuBox sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
