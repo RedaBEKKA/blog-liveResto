@@ -3,22 +3,14 @@ import {
   Toolbar,
   Box,
   Typography,
-  InputBase,
   Menu,
   MenuItem,
   Button,
 } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  Facebook,
-  Instagram,
-  Menu as MenuIcon,
-  Twitter,
-} from "@mui/icons-material";
-import { positions } from "@mui/system";
+import { Menu as MenuIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { fontSize } from "@mui/joy/styles/styleFunctionSx";
 import logo from "./../../images/logo2.png";
 
 const Navbar = () => {
@@ -60,7 +52,10 @@ const Navbar = () => {
             </Link>
           </Typography>
           <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`/propos`}>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/propos`}
+            >
               A propos de nous
             </Link>
           </Typography>
@@ -126,7 +121,7 @@ const Navbar = () => {
                   fontSize: "20px",
                   marginBottom: "12px",
                 }}
-                to={"#"}
+                to={`/propos`}
               >
                 A propos de nous
               </Link>

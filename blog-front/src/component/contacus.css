@@ -1,13 +1,20 @@
+:root {
+  --bg: ##e7e9f33d;
+  --white: #ffffff;
+  --border: #dcdaebe3;
+  --error: red;
+  --color-title: #57555a;
+}
 .container {
   margin-top: 7rem;
   margin-bottom: 7rem;
-  background-color: #e7e9f33d;
+  background-color: var(--bg);
   border-radius: 50px;
 }
 .title {
   padding-top: 2rem;
   padding-bottom: 1rem;
-  color: #57555a;
+  color: var(--color-title);
   font-size: 2rem;
   letter-spacing: 2px;
 }
@@ -20,14 +27,14 @@
 .input {
   width: 19rem;
   height: 2rem;
-  border: 1px solid #dcdaebe3;
+  border: 1px solid var(--border);
   border-radius: 5px;
   padding: 7px;
   margin-bottom: 1.5rem;
   outline: none;
 }
 .textarea {
-  border: 1px solid #dcdaebe3;
+  border: 1px solid var(--border);
   border-radius: 5px;
   padding: 7px;
   margin-bottom: 1.5rem;
@@ -36,7 +43,7 @@
 }
 .input.button {
   background-color: #0e0752;
-  color: white;
+  color: var(--white);
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -44,7 +51,7 @@
   letter-spacing: 1px;
 }
 .span-error {
-  color: red;
+  color: var(--error);
   font-size: 14px;
   margin-bottom: 3px;
 }

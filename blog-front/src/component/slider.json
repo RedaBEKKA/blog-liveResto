@@ -1,22 +1,26 @@
 [
   {
     "id": 1,
-    "image": "https://post.healthline.com/wp-content/uploads/2020/09/healthy-eating-ingredients-732x549-thumbnail.jpg",
-    "title": "Just ddelicious!"
+    "image": "https://www.just-eat.ch/consumer-web/production/images/pizza_cover_mobile.jpg",
+    "title": "Just ddelicious!",
+    "text": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
   },
   {
     "id": 2,
-    "image": "https://www.wbcsd.org/var/site/storage/images/media/images/fresh_pa/80809-2-eng-GB/FRESH_PA_i1140.jpg",
-    "title": "Hello World!"
+    "image": "https://www.just-eat.ch/consumer-web/production/images/sushi_light_mobile.jpg",
+    "title": "Hello World!",
+    "text": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
   },
   {
     "id": 3,
-    "image": "https://img.freepik.com/free-photo/flat-lay-batch-cooking-composition_23-2148765597.jpg?w=2000",
-    "title": "change your mode!"
+    "image": "https://media.istockphoto.com/photos/closeup-of-black-man-eating-healthy-sandwich-at-home-picture-id1307187888?b=1&k=20&m=1307187888&s=170667a&w=0&h=Xh3fpbPbCEJepmbA6FqKHeR_uzRsyKpkkqy3T-W1spc=",
+    "title": "change your mode!",
+    "text": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
   },
   {
     "id": 3,
-    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-    "title": "vivre le moment!"
+    "image": "https://www.niddk.nih.gov/-/media/Images/Health-Information/Digestive-Diseases/KidsEatingBreakfast_330x220.png",
+    "title": "vivre le moment!",
+    "text": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
   }
 ]

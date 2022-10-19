@@ -1,9 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect} from "react";
 import { TextField, Container, Button, Box, Grid } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import axios  from "axios";
 const Login = () => {
+ useEffect(() => {
+    document.title = "Login";
+  });
+
   const {
     register,
     handleSubmit,

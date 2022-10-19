@@ -11,6 +11,7 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Footer from "./../../component/Footer";
 import ContactUs from "../../component/ContactUs";
+import { useEffect } from "react";
 
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: 22,
@@ -18,6 +19,9 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
   border: `2px solid ${theme.palette.background.paper}`,
 }));
 const Propose = () => {
+  useEffect(() => {
+    document.title = "props de nous";
+  });
   return (
     <>
       <Container>
@@ -429,7 +433,7 @@ const Propose = () => {
           </Grid>
         </Box>
       </Container>
-<ContactUs/>
+      <ContactUs />
       <Footer />
     </>
   );

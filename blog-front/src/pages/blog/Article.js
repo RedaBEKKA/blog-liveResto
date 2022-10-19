@@ -3,7 +3,6 @@ import { Container, Box } from "@mui/system";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/joy/Button";
-import Textarea from "@mui/joy/Textarea";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -13,6 +12,10 @@ const Article = () => {
   const [product, setProduct] = useState({});
   useEffect(() => {
     getProduct();
+  });
+
+  useEffect(() => {
+    document.title = "post";
   });
 
   const getProduct = () => {
@@ -67,7 +70,7 @@ const Article = () => {
           />
         </Box>
         <Typography
-          textAlign="center"
+          textAlign="justify"
           lineHeight="2"
           color="#616161"
           sx={{ fontSize: { xs: "17px", md: "19px" } }}
@@ -77,7 +80,15 @@ const Article = () => {
         >
           {product.contenu}
         </Typography>
-        <Box borderBottom={1} pb={1} marginBottom={2}>
+        <Box
+          borderBottom={1}
+          pb={1}
+          marginBottom={2}
+          fontSize={"1.rem"}
+          paddingBottom={"2rem"}
+          textAlign={"left"}
+          fontWeight={"bold"}
+        >
           Commentaires
         </Box>
         <Box sx={{ borderBottom: ".5px solid #ede6e6" }}>
@@ -100,6 +111,7 @@ const Article = () => {
             color="#555"
             maxWidth="70%"
             marginBottom={2}
+            textAlign="justify"
           >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut vel id
             facere iste, alias quo ea voluptatum, ipsa amet quos labore tenetur
@@ -127,6 +139,7 @@ const Article = () => {
             color="#555"
             maxWidth="70%"
             marginBottom={2}
+            textAlign="justify"
           >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut vel id
             facere iste, alias quo ea voluptatum, ipsa amet quos labore tenetur
@@ -154,6 +167,7 @@ const Article = () => {
             color="#555"
             maxWidth="70%"
             marginBottom={2}
+            textAlign="justify"
           >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut vel id
             facere iste, alias quo ea voluptatum, ipsa amet quos labore tenetur
@@ -181,6 +195,7 @@ const Article = () => {
             color="#555"
             maxWidth="70%"
             marginBottom={2}
+            textAlign="justify"
           >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut vel id
             facere iste, alias quo ea voluptatum, ipsa amet quos labore tenetur

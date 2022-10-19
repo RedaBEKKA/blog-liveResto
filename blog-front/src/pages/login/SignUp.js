@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TextField, Container, Button, Box, Grid } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Axios } from "axios";
 
 const SignUp = () => {
+
+  useEffect(() => {
+    document.title = "SignUp";
+  });
+
   let password;
   let cpassword;
   const {
@@ -159,7 +164,7 @@ const SignUp = () => {
           color="primary"
           fullWidth
         >
-         S'inscrire
+          S'inscrire
         </Button>
         <Grid container mt={2}>
           <Grid item xs={6}>
