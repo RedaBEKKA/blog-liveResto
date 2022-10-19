@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import logo from "./../../images/logo2.png";
+import logo from "./../../images/logo_liveresto.png";
 
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({

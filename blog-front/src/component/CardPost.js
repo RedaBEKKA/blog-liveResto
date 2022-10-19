@@ -26,6 +26,21 @@ const CardPost = () => {
 
   return (
     <Box marginTop={10}>
+      <Typography
+        fontWeight={700}
+        fontSize={"2rem"}
+      
+        sx={{
+          marginBottom: { xs: "4rem", sm: "4rem" },
+          marginTop: { xs: "0", sm: "4rem" },
+          background: "#74B0EC",
+          padding: ".5rem 1rem",
+          color: "#fff",
+          borderRadius: "35px",
+        }}
+      >
+        Recent Posts
+      </Typography>
       <Grid container spacing={6}>
         {postsData
           .slice((page - 1) * postPerPage, page * postPerPage)
